@@ -1,4 +1,4 @@
-export const useTransfer = () => {
+export const useConverter = () => {
   // 時間情報、[音楽]、1文字のみの文字列、改行を削除する関数
   function processSrtContent(content: string): string {
     return content
