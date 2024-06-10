@@ -2,8 +2,14 @@
 import { format } from 'date-fns'
 import { saveAs } from 'file-saver'
 
+useHeadTemplate()
 const { processSrtContent } = useConverter()
+
 const result: Ref<string> = ref('')
+const resultLength = computed(() => {
+  return result.value.length.toLocaleString() + '文字, ' + result.value.split(/\s+/).length.toLocaleString() + '単語'
+})
+
 const handleFileChange = (files: FileList) => {
   const file = files[0]
 
@@ -32,9 +38,13 @@ const download = () => {
 <template>
   <div class="max-w-xl m-auto mt-4">
     <h1 class="text-2xl font-bold">
-      srtファイルから文字起こし抽出
+      srtファイルからテキスト抽出
     </h1>
-    <p class="mt-2">
+    <p class="mt-1">
+      srtファイルからテキスト情報のみを抽出してダウンロードすることができます。<br>
+      事前に結果も確認することができます。
+    </p>
+    <p class="mt-4">
       srtファイルを選択してください(ドラッグ&ドロップ可)
     </p>
     <UInput
@@ -45,10 +55,20 @@ const download = () => {
     <div v-if="result">
       <UButton
         class="mt-2"
+        icon="i-heroicons-arrow-down-on-square-16-solid"
         label="ダウンロード"
         @click="download"
       />
-      <pre class="whitespace-pre-wrap bg-gray-800 p-2 rounded mt-4">{{ result }}</pre>
+      <p class="mt-4">
+        {{ resultLength }}
+      </p>
+      <pre class="whitespace-pre-wrap bg-gray-200 dark:bg-gray-800 p-2 rounded">{{ result }}</pre>
     </div>
   </div>
 </template>
+
+<style deep>
+html {
+  overflow-y: scroll;
+}
+</style>
