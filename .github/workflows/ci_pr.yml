@@ -1,4 +1,4 @@
-name: deploy
+name: pr_check_generate
 
 on:
   pull_request:
