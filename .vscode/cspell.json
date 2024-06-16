@@ -1,0 +1,6 @@
+{
+  "ignorePaths": ["package.json"],
+  "words": [
+    "automerge"
+  ]
+}
