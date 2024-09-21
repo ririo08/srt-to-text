@@ -12,7 +12,7 @@
     "lint:fix": "bun lint --fix"
   },
   "dependencies": {
-    "@nuxt/eslint": "^0.3.13",
+    "@nuxt/eslint": "^0.5.0",
     "@nuxt/ui": "^2.16.0",
     "date-fns": "^4.0.0",
     "file-saver": "^2.0.5",
